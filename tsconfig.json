@@ -14,7 +14,10 @@
 		"rootDir": "src",
 		"skipLibCheck": true,
 		"strict": true,
-		"target": "es5"
+		"target": "es5",
+		"paths": {
+			"@/*": ["*"]
+		}
 	},
 	"include": ["src"]
 }
