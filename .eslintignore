@@ -2,3 +2,4 @@ node_modules
 .vs_code
 coverage
 public
+jest.config.ts
