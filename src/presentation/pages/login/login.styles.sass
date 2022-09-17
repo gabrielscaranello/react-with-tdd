@@ -10,15 +10,6 @@
 body
   background-color: $background
 
-input[type="email"], input[type="password"]
-  border: 1px solid $primaryLight
-  line-height: 40px
-  border-radius: 4px
-  padding: 0px 40px 0 8px
-
-  &:focus
-    outline-color: $primaryLight
-
 button
   background-color: $primary
   color: $white
@@ -53,26 +44,6 @@ button
       text-align: center
       font-size: 20px
       text-transform: uppercase
-
-    .inputWrap
-      margin-top: 16px
-      display: flex
-      flex-direction: row
-      position: relative
-
-      input
-        flex-grow: 1
-
-      .status
-        position: absolute
-        right: 8px
-        top: 50%
-        width: 16px
-        height: 16px
-        cursor: help
-        border-radius: 100%
-        background-color: $negative
-        transform: translateY(-50%)
 
     .submit
       margin-top: 32px
