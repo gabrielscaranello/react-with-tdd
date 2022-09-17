@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 import { HttpPostClientSpy } from '@/data/test'
 import { HttpStatusCode } from '@/data/protocols/http'
 import { InvalidCredentialsError, UnexpectedError } from '@/domain/errors'
-import { mockAuthenticationParams } from '@/domain/test'
+import { mockAccountModel, mockAuthenticationParams } from '@/domain/test'
 import { RemoteAuthentication } from './remote-authentication'
 import { AuthenticationParams } from '@/domain/usecases'
 import { AccountModel } from '@/domain/models'
@@ -66,5 +66,14 @@ describe('RemoteAuthentication', () => {
 
     const promise = sut.auth(mockAuthenticationParams())
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should return an AccountModel if HttpPostClient retuns 200', async () => {
+    const { sut, httpPostClientSpy } = makeSut()
+    const httpResult = mockAccountModel()
+    httpPostClientSpy.response = { statusCode: HttpStatusCode.success, body: httpResult }
+
+    const account = await sut.auth(mockAuthenticationParams())
+    expect(account).toEqual(httpResult)
   })
 })
