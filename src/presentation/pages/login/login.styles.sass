@@ -26,6 +26,13 @@
     .submit
       margin-top: 32px
 
+      &:disabled
+        background-color: $disabled
+        color: lighten($black, 35)
+
+        &:hover
+          opacity: 1
+
     .link
       text-align: center
       color: $primary
