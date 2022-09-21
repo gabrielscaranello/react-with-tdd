@@ -62,4 +62,30 @@ describe('Login Component', () => {
     expect(passwordStatus.title).toEqual(errorMessage)
     expect(passwordStatus.className).toMatch(/statusError/)
   })
+
+  test('Should show valid email state if validation success', () => {
+    const { sut, validationStub } = makeSut()
+    const emailInput = sut.getByTestId('email')
+    const errorMessage = null
+    validationStub.errorMessage = errorMessage
+
+    fireEvent.input(emailInput, { target: { value: faker.internet.email() } })
+
+    const emailStatus = sut.getByTestId('email-status')
+    expect(emailStatus.title).toEqual('Tudo certo!')
+    expect(emailStatus.className).toMatch(/statusSuccess/)
+  })
+
+  test('Should show valid password state if validation success', () => {
+    const { sut, validationStub } = makeSut()
+    const passwordInput = sut.getByTestId('password')
+    const errorMessage = null
+    validationStub.errorMessage = errorMessage
+
+    fireEvent.input(passwordInput, { target: { value: faker.internet.password() } })
+
+    const passwordStatus = sut.getByTestId('password-status')
+    expect(passwordStatus.title).toEqual('Tudo certo!')
+    expect(passwordStatus.className).toMatch(/statusSuccess/)
+  })
 })
