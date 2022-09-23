@@ -1,11 +1,13 @@
-import { RouterProvider } from 'react-router-dom'
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import router from '@/presentation/router/router'
+import ReactDOM from 'react-dom'
+
+import Router from '@/presentation/router/router'
+import { makeLoginPage } from './factories/pages/login/login.factory'
 import '@/presentation/styles/global.sass'
 
-ReactDOM.createRoot(document.getElementById('main')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+ReactDOM.render(
+  <Router
+    makeLogin={makeLoginPage}
+  />,
+  document.getElementById('main')
 )
