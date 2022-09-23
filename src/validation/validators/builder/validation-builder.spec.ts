@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker'
-import { RequiredFieldValidation } from '@/validation/validators'
+import { EmailValidation, RequiredFieldValidation } from '@/validation/validators'
 import { ValidationBuilder as sut } from './validation-builder'
 
 describe('ValidationBuilder', () => {
@@ -7,6 +7,14 @@ describe('ValidationBuilder', () => {
     const fieldName = faker.database.column()
     const expected = [new RequiredFieldValidation(fieldName)]
     const validations = sut.field(fieldName).required().build()
+
+    expect(validations).toEqual(expected)
+  })
+
+  test('Should return EmailValidation', () => {
+    const fieldName = faker.database.column()
+    const expected = [new EmailValidation(fieldName)]
+    const validations = sut.field(fieldName).email().build()
 
     expect(validations).toEqual(expected)
   })
