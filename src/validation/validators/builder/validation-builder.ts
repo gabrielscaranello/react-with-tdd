@@ -22,7 +22,7 @@ export class ValidationBuilder {
     return this
   }
 
-  minLength (length: number): ValidationBuilder {
+  min (length: number): ValidationBuilder {
     this.validations.push(new MinLengthValidation(this.fieldName, length))
     return this
   }
