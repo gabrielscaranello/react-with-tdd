@@ -1,1 +1,1 @@
-export { default as formContext } from './form/form-context'
+export { default as FormContext } from './form/form-context'

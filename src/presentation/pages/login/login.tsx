@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 import Styles from './login.styles.sass'
 import { LoginHeader, Input, Button, FormStatus, Footer } from '@/presentation/components'
-import { formContext } from '@/presentation/contexts'
+import { FormContext } from '@/presentation/contexts'
 import { Validation } from '@/presentation/protocols'
 import { Authentication } from '@/domain/usecases'
 
@@ -54,7 +54,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
   return (
     <div className={Styles.login}>
       <LoginHeader />
-      <formContext.Provider value={{ state, setState }}>
+      <FormContext.Provider value={{ state, setState }}>
         <form data-testid="form" className={Styles.form} onSubmit={handleSubmit}>
           <h2>Login</h2>
 
@@ -65,7 +65,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
 
           <FormStatus />
         </form>
-      </formContext.Provider>
+      </FormContext.Provider>
       <Footer />
     </div>
   )

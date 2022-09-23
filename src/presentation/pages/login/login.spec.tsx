@@ -5,9 +5,9 @@ import { cleanup, fireEvent, render, RenderResult, waitFor } from '@testing-libr
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 
-import Login from './login'
 import { AuthenticationSpy, ValidationStub } from '@/presentation/test'
 import { InvalidCredentialsError } from '@/domain/errors'
+import { Login } from '@/presentation/pages'
 
 type SutTypes = {
   sut: RenderResult

@@ -2,8 +2,10 @@ export default {
   roots: ['<rootDir>'],
   collectCoverageFrom: [
     '<rootDir>/src/**/*.{ts,tsx}',
-    '!**/*.d.ts',
-    '!**/index.*',
+    '!<rootDir>/src/main/**/*',
+    '!<rootDir>/src/presentation/router/**/*',
+    '!<rootDir>/src/**/index.*',
+    '!<rootDir>/src/**/*.d.ts',
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'jsdom',
