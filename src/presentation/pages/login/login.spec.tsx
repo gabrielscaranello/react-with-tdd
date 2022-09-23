@@ -72,7 +72,7 @@ describe('Login Component', () => {
   afterEach(cleanup)
   beforeEach(() => { localStorage.clear() })
 
-  test('Should start with initial state', () => {
+  test('should start with initial state', () => {
     const errorMessage = faker.lorem.words()
     const { sut } = makeSut({ errorMessage })
     testButtonIsDisabled(sut, 'submit')
@@ -81,46 +81,46 @@ describe('Login Component', () => {
     testStatusForField(sut, 'password', errorMessage)
   })
 
-  test('Should show e-mail error if validation fails', () => {
+  test('should show e-mail error if validation fails', () => {
     const errorMessage = faker.lorem.words()
     const { sut } = makeSut({ errorMessage })
     populateFormField(sut, 'email')
     testStatusForField(sut, 'email', errorMessage)
   })
 
-  test('Should show password error if validation fails', () => {
+  test('should show password error if validation fails', () => {
     const errorMessage = faker.lorem.words()
     const { sut } = makeSut({ errorMessage })
     populateFormField(sut, 'password')
     testStatusForField(sut, 'password', errorMessage)
   })
 
-  test('Should show valid email state if validation success', () => {
+  test('should show valid email state if validation success', () => {
     const { sut } = makeSut()
     populateFormField(sut, 'email')
     testStatusForField(sut, 'email')
   })
 
-  test('Should show valid password state if validation success', () => {
+  test('should show valid password state if validation success', () => {
     const { sut } = makeSut()
     populateFormField(sut, 'password')
     testStatusForField(sut, 'password')
   })
 
-  test('Should enable submit button if form is valid', () => {
+  test('should enable submit button if form is valid', () => {
     const { sut } = makeSut()
     populateFormField(sut, 'email')
     populateFormField(sut, 'password')
     testButtonIsDisabled(sut, 'submit', false)
   })
 
-  test('Should show loading on submit', async () => {
+  test('should show loading on submit', async () => {
     const { sut } = makeSut()
     await simulateValidSubmit(sut)
     testElementExists(sut, 'spinner')
   })
 
-  test('Should call authentication with correct values', async () => {
+  test('should call authentication with correct values', async () => {
     const { sut, authenticationSpy } = makeSut()
     const email = faker.internet.email()
     const password = faker.internet.password()
@@ -128,21 +128,21 @@ describe('Login Component', () => {
     expect(authenticationSpy.params).toEqual({ email, password })
   })
 
-  test('Should call authentication only once', async () => {
+  test('should call authentication only once', async () => {
     const { sut, authenticationSpy } = makeSut()
     await simulateValidSubmit(sut)
     await simulateValidSubmit(sut)
     expect(authenticationSpy.callsCount).toBe(1)
   })
 
-  test('Should not call authentication if form is invalid', async () => {
+  test('should not call authentication if form is invalid', async () => {
     const errorMessage = faker.lorem.words()
     const { sut, authenticationSpy } = makeSut({ errorMessage })
     await simulateValidSubmit(sut)
     expect(authenticationSpy.callsCount).toBe(0)
   })
 
-  test('Should present error if Authentication fails', async () => {
+  test('should present error if Authentication fails', async () => {
     const { sut, authenticationSpy } = makeSut()
     const error = new InvalidCredentialsError()
     jest.spyOn(authenticationSpy, 'auth')
@@ -153,7 +153,7 @@ describe('Login Component', () => {
     testElementText(sut, 'error-wrap', error.message)
   })
 
-  test('Should add access token to localstorage on success', async () => {
+  test('should add access token to localstorage on success', async () => {
     const { sut, authenticationSpy } = makeSut()
     await simulateValidSubmit(sut)
 
@@ -164,7 +164,7 @@ describe('Login Component', () => {
     expect(history.location.pathname).toBe('/')
   })
 
-  test('Should go to sign up', () => {
+  test('should go to sign up', () => {
     const { sut } = makeSut()
     const signup = sut.getByTestId('signup')
 

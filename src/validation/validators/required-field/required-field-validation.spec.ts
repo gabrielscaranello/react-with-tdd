@@ -7,13 +7,13 @@ const makeSut = (): RequiredFieldValidation => {
 }
 
 describe('RequiredFieldValidation', () => {
-  test('Should return error if field is empty', () => {
+  test('should return error if field is empty', () => {
     const sut = makeSut()
     const error = sut.validate('')
     expect(error).toEqual(new RequiredFieldError())
   })
 
-  test('Should return falsy if field is not empty', () => {
+  test('should return falsy if field is not empty', () => {
     const sut = makeSut()
     const error = sut.validate(faker.lorem.words())
     expect(error).toBeFalsy()

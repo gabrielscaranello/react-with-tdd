@@ -19,7 +19,7 @@ const makeSut = (fieldName: string): SutTypes => {
 }
 
 describe('ValidationComposite', () => {
-  test('Should return error if any validation fails', () => {
+  test('should return error if any validation fails', () => {
     const fieldName = faker.database.column()
     const { sut, fieldValidationsSpy } = makeSut(fieldName)
     const errorMsg = faker.lorem.words()
@@ -29,7 +29,7 @@ describe('ValidationComposite', () => {
     expect(result).toBe(errorMsg)
   })
 
-  test('Should return falsy if all validation succeeds', () => {
+  test('should return falsy if all validation succeeds', () => {
     const fieldName = faker.database.column()
     const { sut } = makeSut(fieldName)
     const result = sut.validate(fieldName, faker.lorem.words())
